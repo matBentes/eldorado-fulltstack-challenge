@@ -39,7 +39,7 @@ app.delete('/book/:isbn', async (req, res) => {
 
   await prisma.book.delete({
     where: {
-      isbn: +isbn
+      isbn
     }
   })
 
@@ -51,7 +51,7 @@ app.put('/book/:isbn', async (req, res) => {
   const { author } = req.body
 
   await prisma.book.update({
-    where: { isbn: +isbn },
+    where: { isbn },
     data: { author }
   })
   // TODO return the correct status code
