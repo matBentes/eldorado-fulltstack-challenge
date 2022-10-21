@@ -9,7 +9,13 @@ dotenv.config()
 const app = express()
 
 app.get('/', (req, res) => {
-  res.send('Express + TypeScript Server')
+  res.send('Express + TypeScript a')
+})
+
+app.get('/book', async (req, res) => {
+  const books = await prisma.book.findMany()
+  console.log(books)
+  return res.json(books)
 })
 
 app.post('/book', async (req, res) => {
