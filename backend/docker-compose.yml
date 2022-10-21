@@ -13,13 +13,13 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - 3306:${MYSQL_PORT}
-  
+      
   app: 
     build: .
     container_name: eldorado_app
     restart: always
     ports: 
-    - 3333:3333 
+    - 3333:${NODE_PORT} 
 
   adminer:
     container_name: adminer
