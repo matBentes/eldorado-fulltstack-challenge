@@ -6,3 +6,7 @@ caso apareca public key retrieval not allowed
 5. Right click the "user properties" area and choose "Add new property"
 6. Add two properties: "useSSL" and "allowPublicKeyRetrieval" 
 https://stackoverflow.com/questions/61749304/connection-between-dbeaver-mysql
+
+
+executar `npx prisma db push`
+executar `npx prisma db seed`
