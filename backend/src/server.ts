@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 
 app.get('/book', async (req, res) => {
   const books = await prisma.book.findMany()
-  console.log(books)
   return res.json(books).status(200)
 })
 
