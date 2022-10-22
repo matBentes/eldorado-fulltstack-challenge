@@ -10,8 +10,14 @@ RUN npm install
 
 COPY . /app 
 
+RUN apk add --no-cache bash
+
+RUN chmod +x /app/wait-for-it.sh
+
+RUN chmod +x /app/run-it.sh
+
 RUN npx prisma generate
 
 EXPOSE 3333 
 
-CMD ["npm", "run", "start:dev"]
+CMD [ "./run-it.sh" ]
