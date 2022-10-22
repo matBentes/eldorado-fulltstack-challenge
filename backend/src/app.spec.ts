@@ -1,5 +1,4 @@
 import { prisma, app } from './server'
-import { describe, afterAll, expect, it, beforeAll } from 'vitest'
 import request from 'supertest'
 
 beforeAll(async () => {
