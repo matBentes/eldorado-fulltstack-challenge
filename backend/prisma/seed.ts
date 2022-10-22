@@ -1,14 +1,7 @@
 import { PrismaClient, Prisma } from '@prisma/client'
+import { genereateIsbn } from '../src/utils'
 
 const prisma = new PrismaClient()
-
-function genereateIsbn (): string {
-  const isbn = Math.floor(
-    Math.random() * (9999999999999 - 1) + 1
-  )
-
-  return isbn.toString()
-}
 
 const userData: Prisma.bookUncheckedCreateInput[] = [
   {
