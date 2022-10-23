@@ -15,12 +15,7 @@ class Book {
   async insert (req: Request, res: Response): Promise<Response> {
     const isbn = genereateIsbn()
     try {
-      const {
-        name,
-        author,
-        copies,
-        pages
-      } = req.body
+      const { name, author, copies, pages } = req.body
 
       const newBook = await prisma.book.create({
         data: {
@@ -31,6 +26,7 @@ class Book {
           pages
         }
       })
+
       return res.status(201).json(newBook)
     } catch (error) {
       return res.status(404)
@@ -56,12 +52,7 @@ class Book {
   async update (req: Request, res: Response): Promise<Response> {
     try {
       const { isbn } = req.params
-      const {
-        name,
-        author,
-        copies,
-        pages
-      } = req.body
+      const { name, author, copies, pages } = req.body
 
       await prisma.book.update({
         where: { isbn },
@@ -74,6 +65,24 @@ class Book {
       })
 
       return res.status(204).json()
+    } catch (e) {
+      return res.status(500)
+    }
+  }
+
+  async findOne (req: Request, res: Response): Promise<Response> {
+    try {
+      const { isbn } = req.params
+
+      console.log(isbn)
+
+      const book = await prisma.book.findFirst({
+        where: {
+          isbn
+        }
+      })
+
+      return res.status(201).json(book)
     } catch (e) {
       return res.status(500)
     }

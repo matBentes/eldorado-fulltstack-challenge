@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
 
 app.get('/book', Book.listAll)
 
+app.get('/book/:isbn', Book.findOne)
+
 app.post('/book', Book.insert)
 
 app.delete('/book/:isbn', Book.delete)
