@@ -22,4 +22,4 @@ app.post('/book', Book.insert)
 
 app.delete('/book/:isbn', Book.delete)
 
-app.put('/book/:isbn', Book.update)
+app.patch('/book/:isbn', Book.update)

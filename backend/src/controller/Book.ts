@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { prisma } from '../server'
+import { genereateIsbn } from '../utils'
 
 class Book {
   async listAll (req: Request, res: Response): Promise<Response> {
@@ -12,16 +13,16 @@ class Book {
   }
 
   async insert (req: Request, res: Response): Promise<Response> {
+    const isbn = genereateIsbn()
     try {
       const {
-        isbn,
         name,
         author,
         copies,
         pages
       } = req.body
 
-      await prisma.book.create({
+      const newBook = await prisma.book.create({
         data: {
           isbn,
           name,
@@ -30,7 +31,7 @@ class Book {
           pages
         }
       })
-      return res.status(201)
+      return res.status(201).json(newBook)
     } catch (error) {
       return res.status(404)
     }
@@ -46,7 +47,7 @@ class Book {
         }
       })
 
-      return res.status(204)
+      return res.status(204).json()
     } catch (e) {
       return res.status(500)
     }
@@ -55,14 +56,24 @@ class Book {
   async update (req: Request, res: Response): Promise<Response> {
     try {
       const { isbn } = req.params
-      const { author } = req.body
+      const {
+        name,
+        author,
+        copies,
+        pages
+      } = req.body
 
       await prisma.book.update({
         where: { isbn },
-        data: { author }
+        data: {
+          name,
+          author,
+          copies,
+          pages
+        }
       })
 
-      return res.status(204)
+      return res.status(204).json()
     } catch (e) {
       return res.status(500)
     }
