@@ -1,4 +1,3 @@
-import { json } from 'express'
 import { app } from './server'
 
 const PORT = process.env.NODE_PORT
