@@ -74,8 +74,6 @@ class Book {
     try {
       const { isbn } = req.params
 
-      console.log(isbn)
-
       const book = await prisma.book.findFirst({
         where: {
           isbn
