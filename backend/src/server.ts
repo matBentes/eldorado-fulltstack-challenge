@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import { PrismaClient } from '@prisma/client'
-import express from 'express'
+import express, { json } from 'express'
 import Book from './controller/Book'
 import cors from 'cors'
 
@@ -9,6 +9,7 @@ dotenv.config()
 
 export const app = express()
 
+app.use(json())
 app.use(cors())
 
 app.get('/', (req, res) => {
