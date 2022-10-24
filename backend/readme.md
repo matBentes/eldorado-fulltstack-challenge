@@ -25,11 +25,19 @@ Este serviço está sendo consumido por um serviço de frontend. Para conferir o
 
 ## Setup
 
-Clone o projeto e, na pasta dele, execute os comandos para subir a aplicação.
+Clone o projeto e, na pasta dele, preencha o arquivo **.env.example** com os seus valores.
+
+Execute os comandos para subir a aplicação.
 
 ```bash
 npm i
 npm run start
+```
+
+Não esqueça de levantar os serviços do container.
+
+```bash
+docker-compose up && docker-compose rm -fvs
 ```
 
 ## Rotas 
